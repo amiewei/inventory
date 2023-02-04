@@ -1,0 +1,22 @@
+<div class="page-content-container">
+  <h3>{{title}}</h3>
+    
+    <p>Shop for Our Latest</p>
+
+    <br>
+    {{#if error}}
+      <p>Error</p>
+    {{else}}
+      {{#each snowboard_list}}
+        <a href={{this.url}}><h3>{{inc @index}}. {{this.name}}</h3></a>
+        <p>Terrain: {{this.terrain}}</p>
+        <p>Riding Level: {{this.riding_level}}</p>
+        <p>Inventory Stock: {{this.stock}}</p>
+        <p>Price: ${{this.price}}</p>
+        <p>Collection: {{this.collection_name}}</p>
+      {{/each}}
+
+    <a href='/snowboard/add'>Add Snowboard</a>
+    {{!-- <a href="{{snowboard.url}}/add">Add snowboard</a> --}}
+    {{/if}}
+</div>

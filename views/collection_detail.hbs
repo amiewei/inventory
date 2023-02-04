@@ -1,0 +1,25 @@
+<div class="page-content-container">
+    <h3>{{title}}</h3>
+
+    <h1>{{collection.name}}</h1>
+    <p>{{collection.description}}</p>
+    <p>{{collection.gender}}</p>
+    <p>{{collection.url}}</p>
+
+    <br>
+    <h5>Snowboards In This Collection</h5>
+
+    {{#ifeq snowboard_list.length 0}}
+        <p>No gear yet</p>
+    {{else}}
+        {{#each snowboard_list}}
+            <a href={{this.url}}><p>{{inc @index}}. {{this.name}}</p></a>
+            <p>Terrain: {{this.terrain}}</p>
+            <p>Riding Level: {{this.riding_level}}</p>
+            <p>Inventory Stock: {{this.stock}}</p>
+            <p>Price: ${{this.price}}</p>
+            <p>Collection: {{this.collection_name}}</p>
+            {{!-- <p>{{this.url}}</p> --}}
+        {{/each}}
+    {{/ifeq}}
+</div>

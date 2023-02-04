@@ -1,0 +1,43 @@
+<div class="page-content-container">
+  <h3>{{title}}</h3>
+
+  <form method="POST" action="">
+    <p>
+      <label for="name" >Snowboard Name:</label>
+      <input type="text" placeholder="Bliss..." name="name" value="{{snowboard.name}}">
+    </p>
+    <p>
+    <label for="terrain riding_level" >Board Type:</label>
+    <select name="terrain">
+        <option value="All Mountain">All Mountain</option>
+        <option value="Park">Park</option>
+        <option value="Powder">Powder</option>
+    </select>
+    <select name="riding_level">
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+    </select>
+    </p>
+    <p>
+      <label for="collections" >Collection:</label>
+      <select name="collections">
+        {{#each collection_list}}
+
+          <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </p>
+    <p>
+        <label for="stock">Stock:</label>
+        <input type="Number" placeholder="1" name="stock" value="{{snowboard.stock}}">
+    </p>
+    <p>
+        <label for="price">Price: $</label>
+        <input type="Number" placeholder="1" name="price" value="{{snowboard.price}}">
+    </p>
+    <button class="submit">Create Snowboard</button>
+  </form>
+
+
+</div>

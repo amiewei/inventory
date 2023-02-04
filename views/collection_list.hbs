@@ -1,0 +1,20 @@
+<div class="page-content-container">
+  <h3>{{title}}</h3>
+    
+    <p>Shop for Our Latest</p>
+
+    <br>
+    {{#if error}}
+      <p>Error</p>
+    {{else}}
+      {{#each collection_list}}
+        <a href={{this.url}}><h3>{{inc @index}}. {{this.name}}</h3></a>
+        <p>{{this.description}}</p>
+        <p>{{this.gender}}</p>
+        {{!-- <p>{{this.url}}</p> --}}
+      {{/each}}
+
+    <a href='/collection/add'>Add Collection</a>
+    {{!-- <a href="{{collection.url}}/add">Add Collection</a> --}}
+    {{/if}}
+</div>

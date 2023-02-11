@@ -249,7 +249,7 @@ exports.bindings_update_get = (req, res, next) => {
   exports.bindings_update_post = [
   
     // Validate and sanitize fields.
-    body("name", "name must not be empty.")
+    body("name", "Name must not be empty.")
       .trim()
       .isLength({ min: 1 })
       .escape(),

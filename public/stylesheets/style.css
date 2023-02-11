@@ -74,6 +74,8 @@ h3.logo a {
     but if you want gradient inbetween the two colors, leave some number space */
   );
   min-width: 100vw;
+  min-height: 80vh;
+  justify-content: center;
 }
 
 .home-page {
@@ -137,18 +139,18 @@ h3 {
   color: rgb(192, 49, 49)
 }
 
-form.add-form {
+form {
   display: flex;
   flex-direction: column;
   width: 500px;
   gap: 10px;
 }
 
-.add-form input, .add-form select {
+form input, form select {
   width: 70%;
 }
 
-.add-form label {
+form label {
   min-width: 30%;
 }
 
@@ -289,5 +291,17 @@ a {
 
   .snowboard-img {
     height: 35vh;
+  }
+
+  form {
+    width: 95vw;
+  }
+
+  form label {
+    width: 10%;
+  }
+
+  form input, form select {
+    width: 70vw;
   }
 }

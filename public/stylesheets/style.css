@@ -4,6 +4,13 @@
   padding: 0;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 nav {
   padding: 0 3vw;
   display: flex;
@@ -49,7 +56,6 @@ nav {
   text-underline-offset: 10px;
 }
 
-
 .logo:hover {
   transform: scale(1.1);
 }
@@ -60,7 +66,7 @@ h3.logo a {
 
 
 .main-container {
-  min-height: 80vh;
+  display: flex;
   background: repeating-linear-gradient(
     45deg,
     white 0px 8px, /* 1st color start and end length */
@@ -75,10 +81,6 @@ h3.logo a {
   grid-template-columns: 
     1fr
     min(70vw, 100%);
-}
-
-.home-page {
-  grid-column: 1
 }
 
 .page-content-container {
@@ -226,19 +228,6 @@ form p {
   gap: 3px;
 }
 
-@media (max-width: 800px) {
-  .left-hero {
-    display: none;
-  }
-
-  .side-by-side-container {
-    width: 90vw;
-    max-height: 80vh;
-    padding: 2%;
-    margin: 2%;
-  }
-}
-
 .item-info {
   display: flex;
   flex-direction: column;
@@ -258,11 +247,36 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color:rgb(51, 78, 177);
-  min-height: 5rem;
+  background-color:rgb(9, 26, 85);
+  height: 5rem;
   color: white;
 }
 
 a {
   text-decoration: none;
+}
+
+/* //don't forget to add meta tag for device width in index.html */
+@media (max-width: 450px) {
+
+
+  .left-hero {
+    display: none;
+  }
+
+  .home-page {
+    display: flex;
+    width: 100%;
+  }
+
+  .side-by-side-container {
+    width: 100%;
+    max-height: 80vh;
+    padding: 2%;
+    margin: 2%;
+  }
+
+  .snowboard-img {
+    height: 40vh;
+  }
 }

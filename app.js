@@ -29,6 +29,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 if (process.env.NODE_ENV !== 'production') {
+  console.log('dev environment')
   require('dotenv').config();
 }
 // console.log(process.env.NODE_ENV)
@@ -41,6 +42,8 @@ mongoose.set('strictQuery', false);
 const dev_db_url =
   `mongodb+srv://admin:${process.env.MONGO_PASSWORD}@cluster0.a9hakyv.mongodb.net/Inventory?retryWrites=true&w=majority`;
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
+
+console.log(mongoDB)
 
 main().catch(err => console.log(err));
 async function main() {

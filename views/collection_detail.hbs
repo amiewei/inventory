@@ -1,25 +1,79 @@
 <div class="page-content-container">
     <h3>{{title}}</h3>
 
-    <h1>{{collection.name}}</h1>
-    <p>{{collection.description}}</p>
-    <p>{{collection.gender}}</p>
-    <p>{{collection.url}}</p>
-
+    <p class="sys-msg">{{message}}</p>
+    <p>Collection Name: {{{collection.name}}}</p>
+    <p>Description: {{{collection.description}}}</p>
+    <p>Gender: {{collection.gender}}</p>
+    <div class="edit-del-btn-grp">
+        <a href="{{collection.url}}/update"><span class="material-symbols-rounded edit-del-btn">edit</span></a>
+        <a href="{{collection.url}}/delete"><span class="material-symbols-rounded edit-del-btn">delete</span></a>
+    </div>
     <br>
-    <h5>Snowboards In This Collection</h5>
+    
+    <h3>Gear In This Collection:</h3>
+    <div class="gear-collection">
+    {{#if gear}}
 
-    {{#ifeq snowboard_list.length 0}}
-        <p>No gear yet</p>
+        <div class="gear-card">
+        {{#ifeq snowboard_list.length 0 }}
+            <h5>No Snowboards Yet</h5>
+        {{else}}
+            <h5>Snowboards</h5>
+            {{#each snowboard_list}}
+                <a href={{this.url}}><p>{{inc @index}}. {{this.name}}</p></a>
+                <p>Terrain: {{{this.terrain}}}</p>
+                <p>Riding Level: {{this.riding_level}}</p>
+                <p>Inventory Stock: {{this.stock}}</p>
+                <p>Price: ${{this.price}}</p>
+                {{!-- <p>{{this.url}}</p> --}}
+            {{/each}}
+        {{/ifeq}}
+            <a href='/snowboard/add'>Add Snowboard
+                <span class="material-symbols-rounded">library_add</span>
+            </a>
+        </div>
+
+        <div class="gear-card">
+        {{#ifeq boots_list.length 0 }}
+            <h5>No Boots Yet</h5>
+        {{else}}
+            <h5>Boots</h5>
+            {{#each boots_list}}
+                <a href={{this.url}}><p>{{inc @index}}. {{this.name}}</p></a>
+                <p>Terrain: {{this.terrain}}</p>
+                <p>Inventory Stock: {{this.stock}}</p>
+                <p>Price: ${{this.price}}</p>
+                {{!-- <p>{{this.url}}</p> --}}
+            {{/each}}
+        {{/ifeq}}
+            <a href='/boots/add'>Add Boots
+                <span class="material-symbols-rounded">library_add</span>
+            </a>
+        </div>
+
+        <div class="gear-card">
+        {{#ifeq bindings_list.length 0 }}
+            <h5>No Bindings Yet</h5>
+        {{else}}
+            <h5>Bindings</h5>
+            {{#each bindings_list}}
+                <a href={{this.url}}><p>{{inc @index}}. {{this.name}}</p></a>
+                <p>Size: {{this.size}}</p>
+                <p>Inventory Stock: {{this.stock}}</p>
+                <p>Price: ${{this.price}}</p>
+                {{!-- <p>{{this.url}}</p> --}}
+            {{/each}}
+        {{/ifeq}}
+            <a href='/bindings/add'>Add Bindings
+                <span class="material-symbols-rounded">library_add</span>
+            </a>
+        </div>
+
     {{else}}
-        {{#each snowboard_list}}
-            <a href={{this.url}}><p>{{inc @index}}. {{this.name}}</p></a>
-            <p>Terrain: {{this.terrain}}</p>
-            <p>Riding Level: {{this.riding_level}}</p>
-            <p>Inventory Stock: {{this.stock}}</p>
-            <p>Price: ${{this.price}}</p>
-            <p>Collection: {{this.collection_name}}</p>
-            {{!-- <p>{{this.url}}</p> --}}
-        {{/each}}
-    {{/ifeq}}
+        <p>No Gear In This Collection</p>
+
+    {{/if}}
+    </div>
+
 </div>

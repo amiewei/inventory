@@ -1,0 +1,53 @@
+<div class="page-content-container">
+  <h3>{{title}}</h3>
+
+  <form class="add-form" method="POST" action="">
+    <p>
+      <label for="name" >Bindings Name:</label>
+      <input type="text" placeholder="Bliss Bindings..." name="name" value="{{bindings.name}}">
+    </p>
+    <p>
+    <label for="size riding_level" >Size:</label>
+    <select name="size">
+        {{#if bindings.size}}
+        <option selected hidden value="{{bindings.size}}">{{bindings.size}}</option>
+        {{/if}}
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+    </select>
+    </p>
+    <p>
+      <label for="collections" >Collection:</label>
+      <select name="collections">
+        {{#if collection_selected}}
+          <option selected hidden value="{{collection_selected._id}}">{{collection_selected.name}}</option>
+          {{else}}
+           <option selected hidden >Select A Collection</option>
+        {{/if}}
+        {{#each collection_list}}
+          <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </p>
+    <p>
+        <label for="stock">Stock:</label>
+        <input type="Number" placeholder="1" name="stock" value="{{bindings.stock}}">
+    </p>
+    <p>
+        <label for="price">Price (USD):</label>
+        <input type="Number" placeholder="1" name="price" value="{{bindings.price}}">
+    </p>
+    <button class="submit">{{title}}</button>
+    {{#if errors}}
+    <ul>
+      {{#each errors}}
+        <li>{{this.msg}}</li>
+      {{/each}}
+    </ul>
+    {{/if}}
+  </form>
+
+
+</div>

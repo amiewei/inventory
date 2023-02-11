@@ -1,26 +1,25 @@
 <div class="page-content-container">
   <h3>{{title}}</h3>
-    
     <p>{{message}}</p>
     <br>
-  <div class="item-list">
+
+    <div class="item-list">
     {{#if error}}
       <p>Error</p>
     {{else}}
-        <a href='/collection/add'>Add Collection 
-          <span class="material-symbols-rounded">library_add</span>
-        </a>
-      {{#each collection_list}}
+      <a href='/pattern/add'>Add Pattern
+        <span class="material-symbols-rounded">library_add</span>
+      </a>
+      {{#each pattern_list}}
       <div class="edit-del-btn-grp">
         <a href={{this.url}}><h3>{{inc @index}}. {{{this.name}}}</h3></a>
         <a href="{{this.url}}/update"><span class="material-symbols-rounded edit-del-btn">edit</span></a>
         <a href="{{this.url}}/delete"><span class="material-symbols-rounded edit-del-btn">delete</span></a>
       </div>
-        <p>{{{this.description}}}</p>
-        <p>{{this.gender}}</p>
-        {{!-- <p>{{this.url}}</p> --}}
+        <p>Description: {{this.description}}</p>
+        {{!-- need to loop through all the snowboards that have this pattern --}}
+        {{!-- <p>Snowboards: {{this.snowboard_names}}</p> --}}
       {{/each}}
-    {{!-- <a href="{{collection.url}}/add">Add Collection</a> --}}
     {{/if}}
     </div>
 </div>

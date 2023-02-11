@@ -1,0 +1,26 @@
+<div class="page-content-container">
+    <h3>{{title}}</h3>
+
+    <h1>{{name}}</h1>
+    <p>{{description}}</p>
+    
+    <p>Snowboard:
+    {{#if snowboard_list}}
+
+        {{assign 'snowboard_list_length' snowboard_list.length}}
+        {{#each snowboard_list}}
+            <span><a href="{{this.url}}">{{{this.name}}}</a></span>
+            {{#iflessthan @index @root.snowboard_list_length }}
+            |
+            {{/iflessthan}}
+        {{/each}}
+    {{else}}
+        <span>None</span>
+    {{/if}}
+
+    </p>
+    <div class="edit-del-btn-grp">
+        <a href="{{url}}/update"><span class="material-symbols-rounded edit-del-btn">edit</span></a>
+        <a href="{{url}}/delete"><span class="material-symbols-rounded edit-del-btn">delete</span></a>
+    </div>
+</div>

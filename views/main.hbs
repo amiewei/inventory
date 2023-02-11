@@ -8,8 +8,54 @@
     {{#if error}}
     <p>Error</p>
     {{else}}
-    <p>No Error!</p>
+
+    <ul class="total-counts"> 
+        <li>Number of Collections: {{collection_count}}</li>
+
+        <li>Number of Snowboards: {{snowboard_count}}</li>
+        
+        <li>Number of Boots: {{boots_count}}</li>
+        
+        <li>Number of Bindings: {{bindings_count}}</li>
+    </ul>  
     {{/if}}
+
+    <div class="card-container">
+
+      {{#ifeq list_snowboard.length 0}}
+      <p>No Snowboards To Show At the Moment</p>
+      {{else}}
+        {{#each list_snowboard}}
+          <div class="side-by-side-container">
+          {{#if image}}
+              <a href="{{url}}">
+                <img class="snowboard-img" src="/data/uploads/{{image}}" alt="uploaded-img">
+              </a>
+          {{/if}}
+
+          <div class="card item-info">
+            <div class="item-text">
+              <a href="{{url}}"><h1>Name: {{{name}}}</h1></a>
+              <p>Terrain: {{{terrain}}}</p>
+              <p>Price USD: ${{price}}</p>
+              <p>Collection:
+
+              {{#if collection}}
+                  <span><a href="{{collectionUrl}}">{{{collection}}}</a></span>
+              {{else}}
+                  <span>None</span>
+              {{/if}}
+              </p>
+            </div>
+              <div class="edit-del-btn-grp">
+                  <a href="{{url}}/update"><span class="material-symbols-rounded edit-del-btn">edit</span></a>
+                  <a href="{{url}}/delete"><span class="material-symbols-rounded edit-del-btn">delete</span></a>
+              </div>
+          </div>
+        </div>
+        {{/each}} 
+
+      {{/ifeq}}
+    </div>
   </div>
-    
 </div>

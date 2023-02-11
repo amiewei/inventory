@@ -1,0 +1,20 @@
+<div class="page-content-container">
+    <h3>{{{title}}}</h3>
+    <p class="sys-msg">{{message}}</p>
+
+    {{#if error}}
+    <p>Error</p>
+    {{else}}
+
+    <form class="add-form" method="POST" action="">
+      <p>
+        <label for="password" >Enter Pass Code:</label>
+        <input type="text" placeholder="Pass code complete deletion" name="password" >
+      </p>
+      <button class="submit">Submit</button>
+    </form>
+    {{/if}}
+
+</div>
+
+

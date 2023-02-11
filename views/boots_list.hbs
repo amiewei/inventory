@@ -1,26 +1,27 @@
 <div class="page-content-container">
   <h3>{{title}}</h3>
-    
     <p>{{message}}</p>
     <br>
-  <div class="item-list">
+
+    <div class="item-list">
     {{#if error}}
       <p>Error</p>
     {{else}}
-        <a href='/collection/add'>Add Collection 
-          <span class="material-symbols-rounded">library_add</span>
-        </a>
-      {{#each collection_list}}
+      <a href='/boots/add'>Add Boots
+        <span class="material-symbols-rounded">library_add</span>
+      </a>
+      {{#each boots_list}}
       <div class="edit-del-btn-grp">
         <a href={{this.url}}><h3>{{inc @index}}. {{{this.name}}}</h3></a>
         <a href="{{this.url}}/update"><span class="material-symbols-rounded edit-del-btn">edit</span></a>
         <a href="{{this.url}}/delete"><span class="material-symbols-rounded edit-del-btn">delete</span></a>
       </div>
-        <p>{{{this.description}}}</p>
-        <p>{{this.gender}}</p>
-        {{!-- <p>{{this.url}}</p> --}}
+        <p>Terrain: {{this.terrain}}</p>
+        <p>Inventory Stock: {{this.stock}}</p>
+        <p>Price (USD): ${{this.price}}</p>
+        <p>Collection: {{this.collection_name}}</p>
       {{/each}}
-    {{!-- <a href="{{collection.url}}/add">Add Collection</a> --}}
+    {{!-- <a href="{{boots.url}}/add">Add boots</a> --}}
     {{/if}}
     </div>
 </div>

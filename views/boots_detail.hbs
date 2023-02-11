@@ -1,0 +1,22 @@
+<div class="page-content-container">
+    <h3>{{title}}</h3>
+
+    <h1>{{name}}</h1>
+    <p>{{terrain}}</p>
+    <p>Inventory: {{stock}}</p>
+    <p>Price USD: ${{price}}</p>
+
+    <p>Collection:
+    {{#if collection_list}}
+        {{#each collection_list}}
+            <span><a href="{{this.url}}">{{{this.name}}}</a></span>
+        {{/each}}
+    {{else}}
+        <span>None</span>
+    {{/if}}
+    </p>
+    <div class="edit-del-btn-grp">
+        <a href="{{url}}/update"><span class="material-symbols-rounded edit-del-btn">edit</span></a>
+        <a href="{{url}}/delete"><span class="material-symbols-rounded edit-del-btn">delete</span></a>
+    </div>
+</div>

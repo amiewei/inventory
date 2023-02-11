@@ -5,13 +5,14 @@
 }
 
 nav {
-  padding: 0 2vw;
+  padding: 0 3vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: rgb(40, 40, 40);
-  min-height: 10rem;
+  min-height: 7rem;
   font-size: 3rem;
+  width: 100vw;
   background-position: center; 
 }
 
@@ -22,11 +23,32 @@ nav {
   justify-content: space-between;
   list-style: none;
   text-decoration: none;
-  gap: 5vw;
+  gap: 2vw;
   font-size: 2.2rem;
+  padding-right: 50px;
   font-weight: bold;
   text-shadow: 1px 2px 1px rgb(60, 59, 59);
 }
+
+/* dont' know why this transform gets triggered whenver page reloads after link click */
+.nav-link {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 10px;
+  transition-property: text-decoration;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+  transition-delay: 0.2s;
+}
+
+.nav-link:hover{
+  color: white;
+  text-shadow: 1px 1px  rgb(238, 135, 9);
+  text-decoration: underline;
+  text-decoration-color: white;
+  text-underline-offset: 10px;
+}
+
 
 .logo:hover {
   transform: scale(1.1);
@@ -36,22 +58,36 @@ h3.logo a {
   font-size: 5rem;
 }
 
-.nav-links a:hover {
-  color: white;
-  text-shadow: 1px 1px  rgb(238, 135, 9);
-}
 
 .main-container {
-  /* padding: 3rem; */
   min-height: 80vh;
+  background: repeating-linear-gradient(
+    45deg,
+    white 0px 8px, /* 1st color start and end length */
+    rgb(245, 245, 245) 9px 10px /* 2nd color start and end length. 
+    2nd color start number should start right after 1st if you don't want gradient. 
+    but if you want gradient inbetween the two colors, leave some number space */
+  );
 }
 
 .home-page {
-  display: flex;
+  display: grid;
+  grid-template-columns: 
+    1fr
+    min(70vw, 100%);
+}
+
+.home-page {
+  grid-column: 1
 }
 
 .page-content-container {
-  padding: 3rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
 }
 
 .left-hero {
@@ -66,7 +102,9 @@ h3.logo a {
   color: white;
   background: url(https://media.giphy.com/media/izLB2oZY9ZXzO/giphy.gif);
   background-size: cover;
-  background-repeat: no-repeat;
+  height: 100vh;
+  background-color: rgb(42, 42, 43);
+
 }
 
 .left-hero h1 {
@@ -81,15 +119,139 @@ h3 {
   font-size: 2rem;
 }
 
-form {
+.edit-del-btn-grp {
+  display: flex;
+}
+
+.edit-del-btn:hover, 
+.edit-del-btn-grp h3:hover{
+  color: orange;
+  cursor: pointer;
+}
+
+.sys-msg {
+  font-style: italic;
+  color: rgb(192, 49, 49)
+}
+
+form.add-form {
   display: flex;
   flex-direction: column;
   width: 500px;
+  gap: 10px;
+}
+
+.add-form input, .add-form select {
+  width: 70%;
+}
+
+.add-form label {
+  min-width: 30%;
+}
+
+input, select {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.checkbox-grp {
+  display:flex;
+  justify-content: flex-end;
+}
+
+.pattern-checkbox {
+  max-width: 20px;
+  /* height: 20px; */
+}
+
+.add-form button {
+  align-self: center;
+  width: 200px;
 }
 
 form p {
   display: flex;
   justify-content: space-between;
+}
+
+.gear-collection {
+  display: flex;
+  width: 80vw;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 10px;
+}
+
+.gear-collection h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.gear-card {
+  min-width: 20%;
+  padding: 10px;
+  border: 1px rgb(208, 203, 194) solid;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.card-container {
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.side-by-side-container {
+  display: flex;
+  width: min(30vw, 100%);
+  max-height: 80vh;
+  gap: 10%;
+  border: 1px rgb(208, 203, 194) solid;
+  border-radius: 10px;
+  padding: 2%;
+  margin: 2%;
+  background-color: white;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+@media (max-width: 800px) {
+  .left-hero {
+    display: none;
+  }
+
+  .side-by-side-container {
+    width: 90vw;
+    max-height: 80vh;
+    padding: 2%;
+    margin: 2%;
+  }
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 3%;
+}
+
+.side-by-side-container:hover{
+  transform: scale(1.05);
+}
+
+.snowboard-img {
+  height: 40vh;
 }
 
 footer {
@@ -101,3 +263,6 @@ footer {
   color: white;
 }
 
+a {
+  text-decoration: none;
+}

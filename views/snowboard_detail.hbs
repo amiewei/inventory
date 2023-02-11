@@ -1,10 +1,43 @@
 <div class="page-content-container">
-    <h3>{{title}}</h3>
+    <h3>{{{title}}}</h3>
 
-    <h1>{{snowboard.name}}</h1>
-    <p>{{snowboard.terrain}}</p>
-    <p>{{snowboard.riding_level}}</p>
-    <p>{{snowboard.stock}}</p>
-    <p>${{snowboard.price}}</p>
-    <a href={{snowboard.url}}><p>{{snowboard.collection}}</p></a>
+    <div class="side-by-side-container">
+
+        {{#if image}}
+            <img class="snowboard-img" src="/data/uploads/{{image}}" alt="uploaded-img">
+        {{/if}}
+
+        <div class="item-info">
+            <h1>Name: {{{name}}}</h1>
+            <p>Terrain: {{{terrain}}}</p>
+            <p>Riding Level: {{{riding_level}}}</p>
+
+            <p>Available Pattern:
+
+            {{assign 'pattern_length' pattern_list.length}}
+            {{#each pattern_list}}
+                <span>{{{this.name}}}</span>
+                {{#iflessthan @index @root.pattern_length }}
+                |
+                {{/iflessthan}}
+            {{/each}}
+
+            </p>
+            <p>Inventory: {{stock}}</p>
+            <p>Price USD: ${{price}}</p>
+            <p>Collection:
+            {{#if collection_list}}
+                {{#each collection_list}}
+                    <span><a href="{{this.url}}">{{{this.name}}}</a></span>
+                {{/each}}
+            {{else}}
+                <span>None</span>
+            {{/if}}
+            </p>
+            <div class="edit-del-btn-grp">
+                <a href="{{url}}/update"><span class="material-symbols-rounded edit-del-btn">edit</span></a>
+                <a href="{{url}}/delete"><span class="material-symbols-rounded edit-del-btn">delete</span></a>
+            </div>
+        </div>
+    </div>
 </div>

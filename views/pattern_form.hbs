@@ -1,0 +1,37 @@
+<div class="page-content-container">
+  <h3>{{title}}</h3>
+
+  <form class="add-form" method="POST" action="">
+    <p>
+      <label for="name" >Pattern Name:</label>
+      <input type="text" placeholder="Pattern name..." name="name" value="{{pattern.name}}">
+    </p>
+    <p>
+      <label for="description" >Description:</label>
+      <input type="text" placeholder="Fun pattern description..." name="description" value="{{pattern.description}}">
+    </p>
+
+    <p>
+      <label for="snowboards" >Snowboards With Pattern:</label>
+      <div class="checkbox-grp">
+        {{#each snowboard_list}}
+          {{#if checked}}
+          <input type="Checkbox" checked class='pattern-checkbox' name="snowboards" value="{{this._id}}">{{{this.name}}}</input>
+          {{else}}
+           <input type="Checkbox" class='pattern-checkbox' name="snowboards" value="{{this._id}}">{{{this.name}}}</input>
+          {{/if}}
+        {{/each}}
+        </div>
+    </p>
+    <button class="submit">{{title}}</button>
+    {{#if errors}}
+    <ul>
+      {{#each errors}}
+        <li>{{this.msg}}</li>
+      {{/each}}
+    </ul>
+    {{/if}}
+  </form>
+
+
+</div>

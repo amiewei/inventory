@@ -1,7 +1,7 @@
 <div class="page-content-container">
   <h3>{{title}}</h3>
 
-  <form method="POST" action="">
+  <form class="add-form" method="POST" action="" enctype="multipart/form-data">
     <p>
       <label for="name" >Snowboard Name:</label>
       <input type="text" placeholder="Bliss..." name="name" value="{{snowboard.name}}">
@@ -9,22 +9,49 @@
     <p>
     <label for="terrain riding_level" >Board Type:</label>
     <select name="terrain">
+        {{#if snowboard.terrain}}
+        <option selected hidden value="{{snowboard.terrain}}">{{{snowboard.terrain}}}</option>
+        {{/if}}
         <option value="All Mountain">All Mountain</option>
         <option value="Park">Park</option>
         <option value="Powder">Powder</option>
+        <option value="Backcountry">Backcountry</option>
     </select>
     <select name="riding_level">
+        {{#if snowboard.riding_level}}
+        <option selected hidden value="{{snowboard.riding_level}}">{{snowboard.riding_level}}</option>
+        {{/if}}
         <option value="Beginner">Beginner</option>
         <option value="Intermediate">Intermediate</option>
         <option value="Advanced">Advanced</option>
     </select>
     </p>
+
+    <p>
+      <label for="pattern" >Patterns:</label>
+      <div class="checkbox-grp">
+
+        {{#each pattern_list}}
+          {{#if checked}}
+          <input type="Checkbox" checked class='pattern-checkbox' name="pattern" value="{{this.id}}">{{{this.name}}}</input>
+          {{else}}
+           <input type="Checkbox" class='pattern-checkbox' name="pattern" value="{{this.id}}">{{{this.name}}}</input>
+          {{/if}}
+        {{/each}}
+
+        </div>
+    </p>
+
     <p>
       <label for="collections" >Collection:</label>
       <select name="collections">
+        {{#if collection_selected}}
+          <option selected hidden value="{{collection_selected._id}}">{{{collection_selected.name}}}</option>
+          {{else}}
+           <option selected hidden >Select A Collection</option>
+        {{/if}}
         {{#each collection_list}}
-
-          <option value="{{this.id}}">{{this.name}}</option>
+          <option value="{{this.id}}">{{{this.name}}}</option>
         {{/each}}
       </select>
     </p>
@@ -33,10 +60,20 @@
         <input type="Number" placeholder="1" name="stock" value="{{snowboard.stock}}">
     </p>
     <p>
-        <label for="price">Price: $</label>
+        <label for="price">Price (USD):</label>
         <input type="Number" placeholder="1" name="price" value="{{snowboard.price}}">
     </p>
-    <button class="submit">Create Snowboard</button>
+
+        <input type="file" id="image" name="image" />
+
+    <button class="submit">{{title}}</button>
+    {{#if errors}}
+    <ul>
+      {{#each errors}}
+        <li>{{this.msg}}</li>
+      {{/each}}
+    </ul>
+    {{/if}}
   </form>
 
 
